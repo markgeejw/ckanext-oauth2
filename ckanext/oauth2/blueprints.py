@@ -1,10 +1,12 @@
+import logging
+
 from flask import Blueprint
 import ckanext.oauth2.oauth2 as oauth2
 import ckanext.oauth2.constants as constants
 
+log = logging.getLogger(__name__)
 
 oauth2_blueprint = Blueprint('oauth2', __name__)
-
 oauth2_helper = oauth2.OAuth2Helper()
 
 def _get_previous_page(default_page):
