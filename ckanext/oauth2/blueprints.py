@@ -45,7 +45,7 @@ def login():
     # the system cannot get the previous page
     came_from_url = _get_previous_page(constants.INITIAL_PAGE)
 
-    oauth2_helper.challenge(came_from_url)
+    return oauth2_helper.challenge(came_from_url)
 
 def callback():
     try:
@@ -53,7 +53,7 @@ def callback():
         user_name = oauth2_helper.identify(token)
         oauth2_helper.remember(user_name)
         oauth2_helper.update_token(user_name, token)
-        oauth2_helper.redirect_from_callback()
+        return oauth2_helper.redirect_from_callback()
     except Exception as e:
 
         session.save()
@@ -73,8 +73,9 @@ def callback():
         toolkit.response.status_int = 302
         redirect_url = oauth2.get_came_from(toolkit.request.params.get('state'))
         redirect_url = '/' if redirect_url == constants.INITIAL_PAGE else redirect_url
-        toolkit.response.location = redirect_url
+        # toolkit.response.location = redirect_url
         helpers.flash_error(error_description)
+        return toolkit.redirect_to(redirect_url)
 
 oauth2_blueprint.add_url_rule(u'/user/login', view_func=login)
 oauth2_blueprint.add_url_rule(u'/oauth2/callback', view_func=callback)
