@@ -1,4 +1,5 @@
 import logging
+from urllib.parse import urlparse
 
 from flask import Blueprint
 from ckan.common import session
