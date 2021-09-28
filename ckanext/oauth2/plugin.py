@@ -97,7 +97,7 @@ class OAuth2Plugin(plugins.SingletonPlugin):
         self.oauth2helper = oauth2.OAuth2Helper()
 
     def before_map(self, m):
-        log.debug('Setting up the redirections to the OAuth2 service')
+        log.warn('Setting up the redirections to the OAuth2 service')
 
         m.connect('/user/login',
                   controller='ckanext.oauth2.controller:OAuth2Controller',
