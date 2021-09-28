@@ -21,13 +21,13 @@
 from __future__ import unicode_literals
 
 import logging
-import constants
+import ckanext.oauth2.constants as constants
 
 from ckan.common import session
 import ckan.lib.helpers as helpers
 import ckan.lib.base as base
 import ckan.plugins.toolkit as toolkit
-import oauth2
+import ckanext.oauth2.oauth2 as oauth2
 
 from ckanext.oauth2.plugin import _get_previous_page
 
