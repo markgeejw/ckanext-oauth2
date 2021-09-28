@@ -41,8 +41,7 @@ class OAuth2Controller(base.BaseController):
         self.oauth2helper = oauth2.OAuth2Helper()
 
     def login(self):
-        print("logging in")
-        log.debug('login')
+        log.warn('login')
 
         # Log in attemps are fired when the user is not logged in and they click
         # on the log in button
