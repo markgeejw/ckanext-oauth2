@@ -22,6 +22,7 @@ from __future__ import unicode_literals
 
 import logging
 import ckanext.oauth2.oauth2 as oauth2
+from ckanext.oauth2.blueprints import oauth2_blueprint
 import os
 
 from functools import partial
@@ -29,6 +30,8 @@ from ckan import plugins
 from ckan.common import g
 from ckan.plugins import toolkit
 from urllib.parse import urlparse
+
+from flask import Blueprint
 
 log = logging.getLogger(__name__)
 
@@ -87,7 +90,8 @@ class OAuth2Plugin(plugins.SingletonPlugin):
 
     plugins.implements(plugins.IAuthenticator, inherit=True)
     plugins.implements(plugins.IAuthFunctions, inherit=True)
-    plugins.implements(plugins.IRoutes, inherit=True)
+    # plugins.implements(plugins.IRoutes, inherit=True)
+    plugins.implements(plugins.IBlueprint)
     plugins.implements(plugins.IConfigurer)
 
     def __init__(self, name=None):
@@ -95,6 +99,9 @@ class OAuth2Plugin(plugins.SingletonPlugin):
         log.warn('Init OAuth2 extension')
 
         self.oauth2helper = oauth2.OAuth2Helper()
+
+    def get_blueprint(self):
+        return oauth2_blueprint
 
     def before_map(self, m):
         log.warn('Setting up the redirections to the OAuth2 service')
