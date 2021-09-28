@@ -51,7 +51,7 @@ def callback():
     try:
         token = oauth2_helper.get_token()
         user_name = oauth2_helper.identify(token)
-        oauth2_helper.remember(user_name)
+        # oauth2_helper.remember(user_name)
         oauth2_helper.update_token(user_name, token)
         return oauth2_helper.redirect_from_callback()
     except Exception as e:
@@ -59,18 +59,16 @@ def callback():
         session.save()
 
         # If the callback is called with an error, we must show the message
-        error_description = toolkit.request.GET.get('error_description')
-        if not error_description:
-            if e.message:
-                error_description = e.message
-            elif hasattr(e, 'description') and e.description:
-                error_description = e.description
-            elif hasattr(e, 'error') and e.error:
-                error_description = e.error
-            else:
-                error_description = type(e).__name__
+        if e.message:
+            error_description = e.message
+        elif hasattr(e, 'description') and e.description:
+            error_description = e.description
+        elif hasattr(e, 'error') and e.error:
+            error_description = e.error
+        else:
+            error_description = type(e).__name__
 
-        toolkit.response.status_int = 302
+        # toolkit.response.status_int = 302
         redirect_url = oauth2.get_came_from(toolkit.request.params.get('state'))
         redirect_url = '/' if redirect_url == constants.INITIAL_PAGE else redirect_url
         # toolkit.response.location = redirect_url
