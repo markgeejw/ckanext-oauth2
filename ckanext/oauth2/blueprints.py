@@ -49,10 +49,10 @@ def login():
 
 def callback():
     try:
-        token = oauth2_helper.get_token()
-        user_name = oauth2_helper.identify(token)
+        # token = oauth2_helper.get_token()
+        # user_name = oauth2_helper.identify(token)
         # oauth2_helper.remember(user_name)
-        oauth2_helper.update_token(user_name, token)
+        # oauth2_helper.update_token(user_name, token)
         return oauth2_helper.redirect_from_callback()
     except Exception as e:
 
