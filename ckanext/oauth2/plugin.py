@@ -92,7 +92,7 @@ class OAuth2Plugin(plugins.SingletonPlugin):
 
     def __init__(self, name=None):
         '''Store the OAuth 2 client configuration'''
-        log.debug('Init OAuth2 extension')
+        log.warn('Init OAuth2 extension')
 
         self.oauth2helper = oauth2.OAuth2Helper()
 
