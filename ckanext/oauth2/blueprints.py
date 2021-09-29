@@ -44,6 +44,7 @@ def login():
     # When the user is not logged in, he/she should be redirected to the dashboard when
     # the system cannot get the previous page
     came_from_url = _get_previous_page(constants.INITIAL_PAGE)
+    log.warn(came_from_url)
 
     return oauth2_helper.challenge(came_from_url)
 
