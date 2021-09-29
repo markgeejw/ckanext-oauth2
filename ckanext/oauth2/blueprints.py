@@ -56,9 +56,9 @@ def callback():
         oauth2_helper.update_token(user_name, token)
         return_url = oauth2.get_came_from(toolkit.request.params.get('state'))
         redir = toolkit.redirect_to(return_url)
-        # for h in headers:
-        #     redir.headers()
-        log.warn(headers[0][0])
+        for h in headers:
+            redir.headers[h[0]] = h[1]
+        # log.warn(headers[0][0])
         log.warn(redir.headers)
         # log.warn(return_url)
         return redir
