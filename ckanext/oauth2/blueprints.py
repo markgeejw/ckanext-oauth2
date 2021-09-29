@@ -1,7 +1,7 @@
 import logging
 from urllib.parse import urlparse
 
-from flask import make_response, Blueprint
+from flask import Blueprint
 from ckan.common import session
 import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
@@ -58,9 +58,6 @@ def callback():
         redir = toolkit.redirect_to(return_url)
         for h in headers:
             redir.headers[h[0]] = h[1]
-        # log.warn(headers[0][0])
-        log.warn(redir.headers)
-        # log.warn(return_url)
         return redir
     except Exception as e:
 

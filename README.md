@@ -1,12 +1,11 @@
 OAuth2 CKAN extension
 =====================
 
-[![Build Status](https://travis-ci.org/conwetlab/ckanext-oauth2.svg?branch=master)](https://travis-ci.org/conwetlab/ckanext-oauth2)
-[![Coverage Status](https://coveralls.io/repos/github/conwetlab/ckanext-oauth2/badge.svg?branch=master)](https://coveralls.io/github/conwetlab/ckanext-oauth2?branch=master)
+*Forked to provide support for CKAN 2.9*
 
 The OAuth2 extension allows site visitors to login through an OAuth2 server.
 
-**Note**: This extension is being tested in CKAN 2.6, 2.7 and 2.8. These are therefore considered as the supported versions
+**Note**: This extension was originally tested in CKAN 2.6, 2.7 and 2.8. The changes made in this repo attempts to provide support for CKAN 2.9 and Python 3. These changes work well enough for me and are not rigorously tested.
 
 
 ## Links

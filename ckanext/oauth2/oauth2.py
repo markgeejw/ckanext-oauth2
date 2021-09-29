@@ -101,7 +101,6 @@ class OAuth2Helper(object):
 
     def get_token(self):
         oauth = OAuth2Session(self.client_id, redirect_uri=self.redirect_uri, scope=self.scope)
-        log.warn(toolkit.request.url)
 
         # Just because of FIWARE Authentication
         headers = {
