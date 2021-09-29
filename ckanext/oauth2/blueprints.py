@@ -55,7 +55,11 @@ def callback():
         headers = oauth2_helper.remember(user_name)
         oauth2_helper.update_token(user_name, token)
         return_url = oauth2.get_came_from(toolkit.request.params.get('state'))
-        return toolkit.redirect_to(return_url)
+        redir = toolkit.redirect_to(return_url)
+        # for h in headers:
+        log.warn(headers)
+        log.warn(return_url)
+        return redir
     except Exception as e:
 
         session.save()
