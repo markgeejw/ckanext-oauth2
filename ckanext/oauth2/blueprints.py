@@ -1,7 +1,7 @@
 import logging
 from urllib.parse import urlparse
 
-from flask import Blueprint
+from flask import make_response, Blueprint
 from ckan.common import session
 import ckan.lib.helpers as helpers
 import ckan.plugins.toolkit as toolkit
@@ -52,9 +52,10 @@ def callback():
     try:
         token = oauth2_helper.get_token()
         user_name = oauth2_helper.identify(token)
-        oauth2_helper.remember(user_name)
+        headers = oauth2_helper.remember(user_name)
         oauth2_helper.update_token(user_name, token)
-        return oauth2_helper.redirect_from_callback()
+        return_url = oauth2.get_came_from(toolkit.request.params.get('state'))
+        return toolkit.redirect_to(return_url)
     except Exception as e:
 
         session.save()
