@@ -115,9 +115,9 @@ class OAuth2Plugin(plugins.SingletonPlugin):
                 toolkit.c.usertoken = new_token
 
         environ = toolkit.request.environ
-        log.warn(environ)
+        # log.warn(environ)
         apikey = toolkit.request.headers.get(self.authorization_header, '')
-        log.warn(toolkit.request.headers)
+        # log.warn(toolkit.request.headers)
         user_name = None
 
         if self.authorization_header == "authorization":
