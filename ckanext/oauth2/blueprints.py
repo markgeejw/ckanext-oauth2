@@ -57,8 +57,10 @@ def callback():
         return_url = oauth2.get_came_from(toolkit.request.params.get('state'))
         redir = toolkit.redirect_to(return_url)
         # for h in headers:
-        log.warn(headers)
-        log.warn(return_url)
+        #     redir.headers()
+        log.warn(headers[0][0])
+        log.warn(redir.headers)
+        # log.warn(return_url)
         return redir
     except Exception as e:
 
